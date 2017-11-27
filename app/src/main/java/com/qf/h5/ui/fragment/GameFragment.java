@@ -2,20 +2,17 @@ package com.qf.h5.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.flyco.tablayout.SegmentTabLayout;
 import com.qf.h5.R;
-import com.qf.h5.adapter.MFragmentPagerAdapter;
 import com.qf.h5.ui.base.BaseTabFragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -28,11 +25,8 @@ public class GameFragment extends BaseTabFragment {
     @Bind(R.id.img_logo)
     ImageView imgLogo;
     @Bind(R.id.tablayout)
-    TabLayout tablayout;
-    @Bind(R.id.tab_viewpage)
-    ViewPager tabViewpage;
+    SegmentTabLayout tablayout;
     private String titleArr[] = {"推荐", "热门", "分类"};
-    private List<Fragment> fragments = new ArrayList<>();
 
     @Nullable
     @Override
@@ -45,11 +39,11 @@ public class GameFragment extends BaseTabFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        fragments.add(new GameListFragment());
-        fragments.add(new GameListFragment());
-        fragments.add(new GameTypeFragment());
-        tabViewpage.setAdapter(new MFragmentPagerAdapter(getChildFragmentManager(), titleArr, fragments));
-        tablayout.setupWithViewPager(tabViewpage);
+        ArrayList<Fragment> mFragments = new ArrayList<>();
+        mFragments.add(new GameListFragment());
+        mFragments.add(new GameListFragment());
+        mFragments.add(new GameTypeFragment());
+        tablayout.setTabData(titleArr, getActivity(), R.id.fl_change, mFragments);
     }
 
 
