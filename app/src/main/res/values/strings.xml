@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">qfh5app</string>
+    <string name="homepage">首页</string>
+    <string name="game">游戏</string>
+    <string name="fuli">福利</string>
+    <string name="personal">我的</string>
+</resources>

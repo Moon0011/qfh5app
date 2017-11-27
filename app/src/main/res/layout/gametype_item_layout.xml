@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="67dp"
+    android:background="#ffffff">
+
+    <ImageView
+        android:id="@+id/game_type_logo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="15dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/error_pic" />
+
+    <TextView
+        android:id="@+id/game_type_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/game_type_logo"
+        android:text="所有分类"
+        android:textColor="#4d4d4d" />
+
+
+    <ImageView
+        android:id="@+id/img_arrow"
+        android:layout_width="5dp"
+        android:layout_height="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="10dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/arrow_right" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#efefef" />
+</RelativeLayout>

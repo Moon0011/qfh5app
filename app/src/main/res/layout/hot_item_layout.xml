@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="95dp"
+    android:background="#ffffff">
+
+    <ImageView
+        android:id="@+id/game_logo"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="15dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/error_pic" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/game_logo"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/game_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="传奇威力加强版" />
+
+        <TextView
+            android:id="@+id/game_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="角色/1564人在玩" />
+
+        <TextView
+            android:id="@+id/game_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="爆率超高的传奇！" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_play"
+        android:layout_width="50dp"
+        android:layout_height="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_corner_style2"
+        android:text="去玩"
+        android:textColor="#ffffff" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#efefef" />
+</RelativeLayout>
