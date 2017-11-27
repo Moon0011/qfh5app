@@ -58,9 +58,11 @@ public class GiftFragment extends BaseFragment {
                     , "斗地主"
                     , 1231, "策略"));
         }
-        //热门
+        //recyclerView在套一层RelativeLayout可以使其整体滑动
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setNestedScrollingEnabled(false);
         hotAdapter = new HotAdapter(getActivity(), recomList);
         recyclerView.setAdapter(hotAdapter);
     }
