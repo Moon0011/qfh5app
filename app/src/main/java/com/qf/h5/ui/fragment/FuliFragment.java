@@ -59,9 +59,9 @@ public class FuliFragment extends BaseTabFragment {
         List<Fragment> mFragments = new ArrayList<>();
         ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
         mFragments.add(new GiftFragment());
+        mFragments.add(new OpenServiceFragment());
         mFragments.add(new GiftFragment());
-        mFragments.add(new GiftFragment());
-        mFragments.add(new GiftFragment());
+        mFragments.add(new MeiziFragment());
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
         }

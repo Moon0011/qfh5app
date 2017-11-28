@@ -5,10 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.qf.h5.R;
 import com.qf.h5.bean.RecommendBean;
@@ -22,7 +20,7 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
  * Created by Administrator on 2017/11/24.
  */
 
-public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> {
+public class MeziAdapter extends RecyclerView.Adapter<MeziAdapter.ViewHolder> {
     private Context mContext;
     private List<RecommendBean> mDatas;
     private LayoutInflater inf;
@@ -37,7 +35,7 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> {
         mOnRecyclerViewItemListener = listener;
     }
 
-    public HotAdapter(Context mContext, List<RecommendBean> datas) {
+    public MeziAdapter(Context mContext, List<RecommendBean> datas) {
         this.mContext = mContext;
         mDatas = datas;
         inf = LayoutInflater.from(mContext);
@@ -45,7 +43,7 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = inf.inflate(R.layout.hot_item_layout, viewGroup, false);
+        View v = inf.inflate(R.layout.mezi_item_layout, viewGroup, false);
         return new ViewHolder(v);
     }
 
@@ -54,22 +52,14 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> {
         if (holder == null) {
             return;
         }
-        holder.tvGameName.setText(mDatas.get(position).getGameName());
-        holder.tvType.setText(mDatas.get(position).getType() + "");
-
+        holder.tvTitle.setText(mDatas.get(position).getGameName());
+        holder.tvTime.setText(mDatas.get(position).getCount()+"");
         GlideApp.with(mContext)
                 .load(mDatas.get(position).getBgurl())
                 .placeholder(R.mipmap.error_pic)
                 .transition(withCrossFade())
                 .error(R.mipmap.error_pic)
                 .into(holder.imgbg);
-        holder.play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(mContext, "play" + mDatas.get(position).getGameName(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
         if (mOnRecyclerViewItemListener != null) {
             itemOnClick(holder);
         }
@@ -82,16 +72,14 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> {
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvGameName, tvType;
+        TextView tvTitle, tvTime;
         ImageView imgbg;
-        Button play;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvGameName = (TextView) itemView.findViewById(R.id.game_name);
-            tvType = (TextView) itemView.findViewById(R.id.game_type);
-            imgbg = (ImageView) itemView.findViewById(R.id.game_logo);
-            play = (Button) itemView.findViewById(R.id.btn_play);
+            tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
+            tvTime = (TextView) itemView.findViewById(R.id.tv_time);
+            imgbg = (ImageView) itemView.findViewById(R.id.mezi_logo);
         }
     }
 
@@ -99,8 +87,8 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                int position = holder.getLayoutPosition();
-//                mOnRecyclerViewItemListener.onItemClickListener(holder.itemView, position);
+                int position = holder.getLayoutPosition();
+                mOnRecyclerViewItemListener.onItemClickListener(holder.itemView, position);
             }
         });
     }

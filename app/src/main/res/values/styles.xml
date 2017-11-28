@@ -28,4 +28,9 @@
         <item name="textAllCaps">false</item>
         <item name="android:textSize">13.7sp</item>
     </style>
+
+    <style name="TabStyle" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">13.7dp</item>
+    </style>
 </resources>

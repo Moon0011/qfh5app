@@ -28,9 +28,11 @@ public class GiftFragment extends BaseFragment {
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
     private String[] imageUrls = {
-            "android.resource://com.qf.h5/mipmap/" + R.mipmap.ad_center01
-            , "android.resource://com.qf.h5/mipmap/" + R.mipmap.ad_center02
-            , "android.resource://com.qf.h5/mipmap/" + R.mipmap.ad_center03
+            "android.resource://com.qf.h5/mipmap/" + R.mipmap.banner01
+            , "android.resource://com.qf.h5/mipmap/" + R.mipmap.banner02
+            , "android.resource://com.qf.h5/mipmap/" + R.mipmap.banner03
+            , "android.resource://com.qf.h5/mipmap/" + R.mipmap.banner04
+            , "android.resource://com.qf.h5/mipmap/" + R.mipmap.banner05
     };
     private HotAdapter hotAdapter;
 
