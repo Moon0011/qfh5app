@@ -1,13 +1,9 @@
 package com.qf.h5.ui.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.qf.h5.R;
@@ -15,7 +11,7 @@ import com.qf.h5.adapter.HotAdapter;
 import com.qf.h5.adapter.NewAdapter;
 import com.qf.h5.adapter.RecommendAdapter;
 import com.qf.h5.bean.RecommendBean;
-import com.qf.h5.ui.base.BaseTabFragment;
+import com.qf.h5.ui.base.BaseFragment;
 import com.qf.h5.utils.GlideImageLoader;
 import com.qf.h5.widget.RoundedImageView;
 import com.youth.banner.Banner;
@@ -26,13 +22,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2017/11/22.
  */
 
-public class HomeFragment extends BaseTabFragment {
+public class HomeFragment extends BaseFragment {
     @Bind(R.id.img_logo)
     ImageView imgLogo;
     @Bind(R.id.slidingView)
@@ -60,17 +55,18 @@ public class HomeFragment extends BaseTabFragment {
     private NewAdapter newAdapter;
     private HotAdapter hotAdapter;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.home_fragment_layout, null);
-        ButterKnife.bind(this, view);
-        return view;
+    protected int getLayoutId() {
+        return R.layout.home_fragment_layout;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    protected void initWidget(View root) {
+
+    }
+
+    @Override
+    protected void initData() {
         banner.setImages(Arrays.asList(imageUrls))
                 .isAutoPlay(true)
                 .setDelayTime(2500)
@@ -127,9 +123,4 @@ public class HomeFragment extends BaseTabFragment {
         }
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
-    }
 }

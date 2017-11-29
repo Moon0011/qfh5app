@@ -34,7 +34,7 @@ public class FuliFragment extends BaseTabFragment {
     ImageView imgLogo;
     @Bind(R.id.common_tablayout)
     CommonTabLayout commonTabLayout;
-    @Bind(R.id.tab_viewpage)
+    @Bind(R.id.fuli_viewpager)
     ViewPager mViewPager;
     private String mTitles[] = {"礼包", "开服", "活动", "美女"};
     private int[] mIconUnselectIds = {
@@ -44,24 +44,32 @@ public class FuliFragment extends BaseTabFragment {
             R.mipmap.tab_home_select, R.mipmap.tab_speech_select,
             R.mipmap.tab_contact_select, R.mipmap.tab_more_select};
     private Random mRandom = new Random();
+    private View rootView;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.fuli_fragment_layout, null);
-        ButterKnife.bind(this, view);
-        return view;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.fuli_fragment_layout, null);
+            ButterKnife.bind(this, rootView);
+        }
+        ViewGroup parent = (ViewGroup) rootView.getParent();
+        if (parent != null) {
+            parent.removeView(rootView);
+        }
+        return rootView;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         List<Fragment> mFragments = new ArrayList<>();
         ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
         mFragments.add(new GiftFragment());
         mFragments.add(new OpenServiceFragment());
-        mFragments.add(new GiftFragment());
         mFragments.add(new MeiziFragment());
+        mFragments.add(new GiftFragment());
+
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
         }
@@ -96,12 +104,6 @@ public class FuliFragment extends BaseTabFragment {
             }
         });
         mViewPager.setCurrentItem(1);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {

@@ -1,5 +1,6 @@
 package com.qf.h5.ui.fragment;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -27,7 +28,7 @@ public class OpenServiceFragment extends BaseFragment {
     Banner banner;
     @Bind(R.id.tablayout)
     TabLayout tablayout;
-    @Bind(R.id.tab_viewpager)
+    @Bind(R.id.openservier_viewpager)
     ViewPager tabViewpager;
     private String[] imageUrls = {
             "android.resource://com.qf.h5/mipmap/" + R.mipmap.banner01
@@ -36,9 +37,19 @@ public class OpenServiceFragment extends BaseFragment {
             , "android.resource://com.qf.h5/mipmap/" + R.mipmap.banner04
             , "android.resource://com.qf.h5/mipmap/" + R.mipmap.banner05
     };
-    private Fragment[] mFragmentArrays = new Fragment[]{new GameListFragment(), new GameListFragment()};
+    private Fragment[] mFragmentArrays = new Fragment[]{new OneFragment(), new OneFragment()};
     private String[] mTabTitles = new String[]{"今日最新", "未来一周"};
 
+    public OpenServiceFragment() {
+    }
+
+    public OpenServiceFragment newInstance(String tag) {
+        OpenServiceFragment tabFragment = new OpenServiceFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("tag", tag);
+        tabFragment.setArguments(bundle);
+        return tabFragment;
+    }
 
     @Override
     protected int getLayoutId() {
@@ -57,12 +68,12 @@ public class OpenServiceFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+        //fragment嵌套fragment需使用getChildFragmentManager
         tablayout.setTabMode(TabLayout.MODE_FIXED);
-        PagerAdapter pagerAdapter = new MyViewPagerAdapter(getFragmentManager());
+        PagerAdapter pagerAdapter = new MyViewPagerAdapter(getChildFragmentManager());
         tabViewpager.setAdapter(pagerAdapter);
         tablayout.setupWithViewPager(tabViewpager);
     }
-
 
     @Override
     public void onStart() {
