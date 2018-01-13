@@ -31,7 +31,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.GameTypeListActivity" />
+        <activity
+            android:name=".ui.GameTypeListActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.H5WebActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

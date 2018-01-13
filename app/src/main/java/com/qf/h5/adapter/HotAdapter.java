@@ -1,6 +1,8 @@
 package com.qf.h5.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,11 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.qf.h5.R;
 import com.qf.h5.bean.RecommendBean;
 import com.qf.h5.common.GlideApp;
+import com.qf.h5.ui.H5WebActivity;
 
 import java.util.List;
 
@@ -66,7 +68,11 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> {
         holder.play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, "play" + mDatas.get(position).getGameName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, H5WebActivity.class);
+                Bundle b = new Bundle();
+                b.putString("game_name", mDatas.get(position).getGameName());
+                intent.putExtras(b);
+                mContext.startActivity(intent);
             }
         });
 

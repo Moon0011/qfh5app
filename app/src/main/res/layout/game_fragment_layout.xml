@@ -54,6 +54,7 @@
             android:layout_centerInParent="true"
             tl:tl_bar_color="#ffffff"
             tl:tl_indicator_color="#14b4c4"
+            tl:tl_indicator_corner_radius="8dp"
             tl:tl_indicator_margin_bottom="2dp"
             tl:tl_indicator_margin_left="2dp"
             tl:tl_indicator_margin_right="2dp"
