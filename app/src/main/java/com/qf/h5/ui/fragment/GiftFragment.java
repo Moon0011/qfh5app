@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.qf.h5.R;
-import com.qf.h5.adapter.HotAdapter;
+import com.qf.h5.adapter.GameListAdapter;
 import com.qf.h5.bean.RecommendBean;
 import com.qf.h5.ui.base.BaseFragment;
 import com.qf.h5.utils.GlideImageLoader;
@@ -34,7 +34,7 @@ public class GiftFragment extends BaseFragment {
             , "android.resource://com.qf.h5/mipmap/" + R.mipmap.banner04
             , "android.resource://com.qf.h5/mipmap/" + R.mipmap.banner05
     };
-    private HotAdapter hotAdapter;
+    private GameListAdapter hotAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -65,7 +65,7 @@ public class GiftFragment extends BaseFragment {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setNestedScrollingEnabled(false);
-        hotAdapter = new HotAdapter(getActivity(), recomList);
+        hotAdapter = new GameListAdapter(getActivity(), recomList);
         recyclerView.setAdapter(hotAdapter);
     }
 

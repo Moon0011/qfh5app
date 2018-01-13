@@ -24,7 +24,7 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
  * Created by Administrator on 2017/11/24.
  */
 
-public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> {
+public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.ViewHolder> {
     private Context mContext;
     private List<RecommendBean> mDatas;
     private LayoutInflater inf;
@@ -39,7 +39,7 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> {
         mOnRecyclerViewItemListener = listener;
     }
 
-    public HotAdapter(Context mContext, List<RecommendBean> datas) {
+    public GameListAdapter(Context mContext, List<RecommendBean> datas) {
         this.mContext = mContext;
         mDatas = datas;
         inf = LayoutInflater.from(mContext);
@@ -47,7 +47,7 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = inf.inflate(R.layout.hot_item_layout, viewGroup, false);
+        View v = inf.inflate(R.layout.gamelist_item_layout, viewGroup, false);
         return new ViewHolder(v);
     }
 

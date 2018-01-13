@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="12">
+    android:weightSum="12.8">
 
     <FrameLayout
         android:id="@+id/contentPanel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="11" />
+        android:layout_weight="11.8" />
 
     <View
         android:layout_width="match_parent"
@@ -21,12 +21,13 @@
         android:id="@android:id/tabhost"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="#fff">
 
         <FrameLayout
             android:id="@android:id/tabcontent"
             android:layout_width="match_parent"
-            android:layout_height="55dp" />
+            android:layout_height="match_parent" />
     </android.support.v4.app.FragmentTabHost>
 
 </LinearLayout>

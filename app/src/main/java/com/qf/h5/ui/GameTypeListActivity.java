@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.qf.h5.R;
-import com.qf.h5.adapter.HotAdapter;
+import com.qf.h5.adapter.GameListAdapter;
 import com.qf.h5.bean.RecommendBean;
 import com.qf.h5.ui.base.BaseActivity;
 
@@ -26,7 +26,7 @@ public class GameTypeListActivity extends BaseActivity {
     RecyclerView recyclerView;
     @Bind(R.id.tv_typename)
     TextView tvTypename;
-    private HotAdapter hotAdapter;
+    private GameListAdapter hotAdapter;
 
     @Override
     protected int getLayoutById() {
@@ -73,7 +73,7 @@ public class GameTypeListActivity extends BaseActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        hotAdapter = new HotAdapter(this, recomList);
+        hotAdapter = new GameListAdapter(this, recomList);
         recyclerView.setAdapter(hotAdapter);
     }
 

@@ -20,7 +20,6 @@ public class MainActivity extends BaseActivity {
     private int mImageViewArray[] = {R.drawable.tab_room, R.drawable.tab_platform, R.drawable.tab_video, R.drawable.tab_personal};
     private String mTextviewArray[] = {"房间", "平台", "福利", "我的"};
 
-
     @Override
     protected int getLayoutById() {
         return R.layout.activity_main;
@@ -36,7 +35,7 @@ public class MainActivity extends BaseActivity {
             mTabHost.addTab(tabSpec, fragmentArray[i], null);
             mTabHost.getTabWidget().setDividerDrawable(null);
         }
-        mTabHost.setCurrentTab(1);
+        mTabHost.setCurrentTab(0);
     }
 
     @Override

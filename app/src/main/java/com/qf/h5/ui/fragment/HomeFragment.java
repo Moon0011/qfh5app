@@ -1,19 +1,24 @@
 package com.qf.h5.ui.fragment;
 
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.qf.h5.R;
-import com.qf.h5.adapter.HotAdapter;
-import com.qf.h5.adapter.NewAdapter;
-import com.qf.h5.adapter.RecommendAdapter;
-import com.qf.h5.bean.RecommendBean;
+import com.qf.h5.adapter.MFragmentPagerAdapter;
 import com.qf.h5.ui.base.BaseFragment;
 import com.qf.h5.utils.GlideImageLoader;
-import com.qf.h5.widget.RoundedImageView;
+import com.qf.h5.widget.MViewPager;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
@@ -22,28 +27,25 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2017/11/22.
  */
 
-public class HomeFragment extends BaseFragment {
-    @Bind(R.id.img_logo)
-    ImageView imgLogo;
+public class HomeFragment extends Fragment {
+    @Bind(R.id.tv_title)
+    TextView tvTitle;
+    @Bind(R.id.et_search)
+    EditText etSearch;
     @Bind(R.id.slidingView)
     Banner banner;
-    @Bind(R.id.recommendRecyclerView)
-    RecyclerView recommendRecyclerView;
-    @Bind(R.id.hotRecyclerView)
-    RecyclerView hotRecyclerView;
-    @Bind(R.id.newRecyclerView)
-    RecyclerView newRecyclerView;
-    @Bind(R.id.img_recommend)
-    RoundedImageView imgRecommend;
-    @Bind(R.id.img_hot)
-    RoundedImageView imgHot;
-    @Bind(R.id.img_new)
-    RoundedImageView imgNew;
+    @Bind(R.id.mtabLayout)
+    TabLayout mTabLayout;
+    @Bind(R.id.tab_viewpage)
+    MViewPager mViewPager;
+    private Fragment[] mFragmentArrays = new Fragment[]{new GameListFragment(), new GameListFragment(), new GameListFragment(), new GameListFragment()};
     private String[] imageUrls = {
             "android.resource://com.qf.h5/mipmap/" + R.mipmap.banner01
             , "android.resource://com.qf.h5/mipmap/" + R.mipmap.banner02
@@ -51,60 +53,40 @@ public class HomeFragment extends BaseFragment {
             , "android.resource://com.qf.h5/mipmap/" + R.mipmap.banner04
             , "android.resource://com.qf.h5/mipmap/" + R.mipmap.banner05
     };
-    private RecommendAdapter recommendAdapter;
-    private NewAdapter newAdapter;
-    private HotAdapter hotAdapter;
+    private final String[] mTabTitles = {"精品推荐", "热门", "新上架", "活动"};
+    private boolean isShowSearch = false;
+    private View rootView;
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.home_fragment_layout;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.home_fragment_layout, null);
+            ButterKnife.bind(this, rootView);
+        }
+        ViewGroup parent = (ViewGroup) rootView.getParent();
+        if (parent != null) {
+            parent.removeView(rootView);
+        }
+        return rootView;
     }
 
     @Override
-    protected void initWidget(View root) {
-
-    }
-
-    @Override
-    protected void initData() {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        tvTitle.setVisibility(View.VISIBLE);
+        etSearch.setVisibility(View.GONE);
         banner.setImages(Arrays.asList(imageUrls))
+                .setBannerStyle(BannerConfig.CIRCLE_INDICATOR)
                 .isAutoPlay(true)
                 .setDelayTime(2500)
-                .setIndicatorGravity(BannerConfig.RIGHT)
+                .setIndicatorGravity(BannerConfig.CENTER)
                 .setImageLoader(new GlideImageLoader())
                 .start();
-        List<RecommendBean> recomList = new ArrayList<>();
-        recomList.add(new RecommendBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511526181888&di=98054ebc2db8e614c3dc225fddc4d912&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01c3db581050c2a84a0d304ff95d9f.jpg%401280w_1l_2o_100sh.jpg"
-                , "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511528825612&di=733a2bd75c475ad5d7eba3e3e86dc86f&imgtype=0&src=http%3A%2F%2Fstatic.ewoka.com%2Fuploads%2Fallimg%2F140505%2F724256_140505115818_1_lit.jpg"
-                , "传奇来了"
-                , 1231, "角色"));
-        recomList.add(new RecommendBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511526181888&di=98054ebc2db8e614c3dc225fddc4d912&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01c3db581050c2a84a0d304ff95d9f.jpg%401280w_1l_2o_100sh.jpg"
-                , "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511528825612&di=733a2bd75c475ad5d7eba3e3e86dc86f&imgtype=0&src=http%3A%2F%2Fstatic.ewoka.com%2Fuploads%2Fallimg%2F140505%2F724256_140505115818_1_lit.jpg"
-                , "凡人战八荒"
-                , 1231, "塔防"));
-        recomList.add(new RecommendBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511526181888&di=98054ebc2db8e614c3dc225fddc4d912&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01c3db581050c2a84a0d304ff95d9f.jpg%401280w_1l_2o_100sh.jpg"
-                , "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511528825612&di=733a2bd75c475ad5d7eba3e3e86dc86f&imgtype=0&src=http%3A%2F%2Fstatic.ewoka.com%2Fuploads%2Fallimg%2F140505%2F724256_140505115818_1_lit.jpg"
-                , "大唐真龙"
-                , 1231, "冒险"));
-        recomList.add(new RecommendBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511526181888&di=98054ebc2db8e614c3dc225fddc4d912&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01c3db581050c2a84a0d304ff95d9f.jpg%401280w_1l_2o_100sh.jpg"
-                , "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511528825612&di=733a2bd75c475ad5d7eba3e3e86dc86f&imgtype=0&src=http%3A%2F%2Fstatic.ewoka.com%2Fuploads%2Fallimg%2F140505%2F724256_140505115818_1_lit.jpg"
-                , "斗地主"
-                , 1231, "策略"));
-        //推荐
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-        recommendRecyclerView.setLayoutManager(gridLayoutManager);
-        recommendAdapter = new RecommendAdapter(getActivity(), recomList);
-        recommendRecyclerView.setAdapter(recommendAdapter);
-        //热门
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        hotRecyclerView.setLayoutManager(linearLayoutManager);
-        hotAdapter = new HotAdapter(getActivity(), recomList);
-        hotRecyclerView.setAdapter(hotAdapter);
-        //新品
-        GridLayoutManager newGridLayoutManager = new GridLayoutManager(getContext(), 3);
-        newRecyclerView.setLayoutManager(newGridLayoutManager);
-        newAdapter = new NewAdapter(getActivity(), recomList);
-        newRecyclerView.setAdapter(newAdapter);
+        PagerAdapter pagerAdapter = new MyViewPagerAdapter(getChildFragmentManager());
+        mViewPager.setAdapter(pagerAdapter);
+        mTabLayout.setupWithViewPager(mViewPager);
+        mViewPager.setCurrentItem(0);
     }
 
     @Override
@@ -123,4 +105,43 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
+    @OnClick({R.id.img_logo, R.id.img_search})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.img_logo:
+                break;
+            case R.id.img_search:
+                if (isShowSearch) {
+                    tvTitle.setVisibility(View.GONE);
+                    etSearch.setVisibility(View.VISIBLE);
+                    isShowSearch = !isShowSearch;
+                } else {
+                    tvTitle.setVisibility(View.VISIBLE);
+                    etSearch.setVisibility(View.GONE);
+                    isShowSearch = !isShowSearch;
+                }
+                break;
+        }
+    }
+
+    class MyViewPagerAdapter extends FragmentPagerAdapter {
+        public MyViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentArrays[position];
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentArrays.length;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mTabTitles[position];
+        }
+    }
 }

@@ -5,208 +5,97 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="@color/app_base_color" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@color/app_base_color">
+
+            <ImageView
+                android:id="@+id/img_logo"
+                android:layout_width="88dp"
+                android:layout_height="23dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:background="@mipmap/logo" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="H5游戏中心"
+                android:textColor="#fff"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="210dp"
+                android:layout_height="32dp"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="9dp"
+                android:layout_toRightOf="@+id/img_logo"
+                android:background="@drawable/shape_corner_style1"
+                android:hint="请输入游戏名称"
+                android:paddingLeft="5dp"
+                android:textColorHint="#acacac"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/img_search"
+                android:layout_width="18dp"
+                android:layout_height="17dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="11dp"
+                android:background="@mipmap/ic_search" />
+        </RelativeLayout>
+    </LinearLayout>
+
     <com.qf.h5.widget.MStickScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:stickyHeader="@+id/titleLayout">
+        app:stickyHeader="@+id/mtabLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:id="@+id/titleLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:background="#14b4c0" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:background="#14b4c0"
-                    android:gravity="center|left"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/img_logo"
-                        android:layout_width="88dp"
-                        android:layout_height="18dp"
-                        android:layout_marginLeft="10dp"
-                        android:background="@mipmap/logo" />
-
-                    <EditText
-                        android:layout_width="242dp"
-                        android:layout_height="32dp"
-                        android:layout_marginLeft="9dp"
-                        android:background="@drawable/shape_corner_style1"
-                        android:hint="请输入游戏名称"
-                        android:paddingLeft="5dp"
-                        android:textColorHint="#acacac" />
-                </LinearLayout>
-            </LinearLayout>
 
             <com.youth.banner.Banner
                 android:id="@+id/slidingView"
                 android:layout_width="match_parent"
-                android:layout_height="167dp" />
+                android:layout_height="134dp"
+                app:indicator_height="6dp"
+                app:indicator_margin="12dp"
+                app:indicator_width="6dp" />
 
-            <View
+            <android.support.design.widget.TabLayout
+                android:id="@+id/mtabLayout"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="#efefef" />
+                android:layout_height="43dp"
+                android:background="@color/white"
+                app:tabIndicatorColor="@color/app_base_color"
+                app:tabSelectedTextColor="@color/app_base_color"
+                app:tabTextAppearance="@style/TabLayoutTextStyle"
+                app:tabTextColor="#6a6a6a" />
 
-            <RelativeLayout
+            <com.qf.h5.widget.MViewPager
+                android:id="@+id/tab_viewpage"
                 android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-                <com.qf.h5.widget.RoundedImageView
-                    android:id="@+id/img_recommend"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginLeft="10dp"
-                    android:src="@mipmap/game_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/img_recommend"
-                    android:text="精品推荐" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginRight="5dp"
-                    android:layout_toLeftOf="@+id/img_recommend_arrow"
-                    android:text="全部" />
-
-                <ImageView
-                    android:id="@+id/img_recommend_arrow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@mipmap/arrow_right" />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="#efefef" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recommendRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="#efefef" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-                <com.qf.h5.widget.RoundedImageView
-                    android:id="@+id/img_hot"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginLeft="10dp"
-                    android:src="@mipmap/game_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/img_hot"
-                    android:text="热门游戏" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginRight="5dp"
-                    android:layout_toLeftOf="@+id/img_hot_arrow"
-                    android:text="全部" />
-
-                <ImageView
-                    android:id="@+id/img_hot_arrow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@mipmap/arrow_right" />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="#efefef" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/hotRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="#efefef" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-                <com.qf.h5.widget.RoundedImageView
-                    android:id="@+id/img_new"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginLeft="10dp"
-                    android:src="@mipmap/game_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/img_new"
-                    android:text="最新上架" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="#efefef" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/newRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
         </LinearLayout>
     </com.qf.h5.widget.MStickScrollView>
+
 </LinearLayout>
