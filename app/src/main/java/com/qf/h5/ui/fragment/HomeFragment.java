@@ -1,5 +1,6 @@
 package com.qf.h5.ui.fragment;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,10 +11,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.qf.h5.R;
+import com.qf.h5.adapter.ActAdapter;
 import com.qf.h5.adapter.GameListAdapter;
 import com.qf.h5.adapter.MViewPagerAdapter;
 import com.qf.h5.adapter.RecommendAdapter;
 import com.qf.h5.bean.RecommendBean;
+import com.qf.h5.ui.GameDetailActivity;
 import com.qf.h5.ui.base.BaseFragment;
 import com.qf.h5.utils.GlideImageLoader;
 import com.qf.h5.widget.MViewPager;
@@ -58,6 +61,7 @@ public class HomeFragment extends BaseFragment {
     private RecommendAdapter recommendAdapter;
     private GameListAdapter gameListAdapter;
     private List<RecommendBean> datas;
+    private ActAdapter actAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -147,6 +151,14 @@ public class HomeFragment extends BaseFragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
         recommendRecycleview.setLayoutManager(gridLayoutManager);
         recommendAdapter = new RecommendAdapter(getActivity(), datas);
+        recommendAdapter.setOnRecyclerViewItemListener(new RecommendAdapter.OnRecyclerViewItemListener() {
+            @Override
+            public void onItemClickListener(View view, int position) {
+                Bundle b = new Bundle();
+                b.putString("gamename", datas.get(position).getGameName());
+                gotoActivityWithBundle(getActivity(), GameDetailActivity.class, b);
+            }
+        });
         recommendRecycleview.setAdapter(recommendAdapter);
     }
 
@@ -165,10 +177,44 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initActivity() {
+        List<RecommendBean> recomList = new ArrayList<>();
+        recomList.add(new RecommendBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511526181888&di=98054ebc2db8e614c3dc225fddc4d912&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01c3db581050c2a84a0d304ff95d9f.jpg%401280w_1l_2o_100sh.jpg"
+                , "http://img3.imgtn.bdimg.com/it/u=817223843,4027520229&fm=214&gp=0.jpg"
+                , "《侠客行》跨年团购双倍奖！令狐冲带你笑傲元旦"
+                , 1231, "角色扮演"));
+        recomList.add(new RecommendBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511526181888&di=98054ebc2db8e614c3dc225fddc4d912&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01c3db581050c2a84a0d304ff95d9f.jpg%401280w_1l_2o_100sh.jpg"
+                , "http://img3.imgtn.bdimg.com/it/u=817223843,4027520229&fm=214&gp=0.jpg"
+                , "凡人战八荒"
+                , 1231, "角色扮演"));
+        recomList.add(new RecommendBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511526181888&di=98054ebc2db8e614c3dc225fddc4d912&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01c3db581050c2a84a0d304ff95d9f.jpg%401280w_1l_2o_100sh.jpg"
+                , "http://img3.imgtn.bdimg.com/it/u=817223843,4027520229&fm=214&gp=0.jpg"
+                , "大唐真龙"
+                , 1231, "角色扮演"));
+        recomList.add(new RecommendBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511526181888&di=98054ebc2db8e614c3dc225fddc4d912&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01c3db581050c2a84a0d304ff95d9f.jpg%401280w_1l_2o_100sh.jpg"
+                , "http://img3.imgtn.bdimg.com/it/u=817223843,4027520229&fm=214&gp=0.jpg"
+                , "斗地主"
+                , 1231, "棋牌娱乐"));
+        recomList.add(new RecommendBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511526181888&di=98054ebc2db8e614c3dc225fddc4d912&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01c3db581050c2a84a0d304ff95d9f.jpg%401280w_1l_2o_100sh.jpg"
+                , "http://img3.imgtn.bdimg.com/it/u=817223843,4027520229&fm=214&gp=0.jpg"
+                , "传奇来了"
+                , 1231, "角色扮演"));
+        recomList.add(new RecommendBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511526181888&di=98054ebc2db8e614c3dc225fddc4d912&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01c3db581050c2a84a0d304ff95d9f.jpg%401280w_1l_2o_100sh.jpg"
+                , "http://img3.imgtn.bdimg.com/it/u=817223843,4027520229&fm=214&gp=0.jpg"
+                , "凡人战八荒"
+                , 1231, "角色扮演")); recomList.add(new RecommendBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511526181888&di=98054ebc2db8e614c3dc225fddc4d912&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01c3db581050c2a84a0d304ff95d9f.jpg%401280w_1l_2o_100sh.jpg"
+                , "http://img3.imgtn.bdimg.com/it/u=817223843,4027520229&fm=214&gp=0.jpg"
+                , "传奇来了"
+                , 1231, "角色扮演"));
+        recomList.add(new RecommendBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511526181888&di=98054ebc2db8e614c3dc225fddc4d912&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01c3db581050c2a84a0d304ff95d9f.jpg%401280w_1l_2o_100sh.jpg"
+                , "http://img3.imgtn.bdimg.com/it/u=817223843,4027520229&fm=214&gp=0.jpg"
+                , "凡人战八荒"
+                , 1231, "角色扮演"));
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         actRecycleView.setLayoutManager(linearLayoutManager);
-        gameListAdapter = new GameListAdapter(getActivity(), datas);
-        actRecycleView.setAdapter(gameListAdapter);
+        actRecycleView.setNestedScrollingEnabled(false);
+        actAdapter = new ActAdapter(getActivity(), recomList);
+        actRecycleView.setAdapter(actAdapter);
     }
 
     @Override

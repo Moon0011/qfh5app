@@ -26,7 +26,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.View
     private LayoutInflater inf;
 
     public interface OnRecyclerViewItemListener {
-        public void onItemClickListener(View view, int position);
+        void onItemClickListener(View view, int position);
     }
 
     private OnRecyclerViewItemListener mOnRecyclerViewItemListener;
@@ -53,7 +53,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.View
             return;
         }
         holder.tvGameName.setText(mDatas.get(position).getGameName());
-        holder.tvCount.setText(mDatas.get(position).getCount()+"");
+        holder.tvCount.setText(mDatas.get(position).getCount() + "");
 
         GlideApp.with(mContext)
                 .load(mDatas.get(position).getBgurl())
