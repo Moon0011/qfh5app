@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <LinearLayout
@@ -21,22 +20,12 @@
             android:layout_height="52dp"
             android:background="@color/app_base_color">
 
-            <ImageView
-                android:id="@+id/img_logo"
-                android:layout_width="88dp"
-                android:layout_height="23dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="10dp"
-                android:background="@mipmap/logo"
-                android:scaleType="fitXY" />
-
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="H5游戏中心"
+                android:text="游戏类别"
                 android:textColor="#fff"
                 android:textSize="16dp" />
 
@@ -64,40 +53,9 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <com.qf.h5.widget.MStickScrollView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        app:stickyHeader="@+id/mtabLayout">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.youth.banner.Banner
-                android:id="@+id/slidingView"
-                android:layout_width="match_parent"
-                android:layout_height="134dp"
-                app:indicator_height="6dp"
-                app:indicator_margin="12dp"
-                app:indicator_width="6dp" />
-
-            <android.support.design.widget.TabLayout
-                android:id="@+id/mtabLayout"
-                android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:background="@color/white"
-                app:tabIndicatorColor="@color/app_base_color"
-                app:tabSelectedTextColor="@color/app_base_color"
-                app:tabTextAppearance="@style/TabLayoutTextStyle"
-                app:tabTextColor="#6a6a6a" />
-
-            <com.qf.h5.widget.MViewPager
-                android:id="@+id/tab_viewpage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-    </com.qf.h5.widget.MStickScrollView>
-
+        android:descendantFocusability="blocksDescendants" />
 </LinearLayout>

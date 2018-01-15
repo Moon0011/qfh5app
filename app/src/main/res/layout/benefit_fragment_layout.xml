@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e4e4e4"
     android:orientation="vertical">
 
     <LinearLayout
@@ -20,28 +22,30 @@
             android:layout_height="52dp"
             android:background="@color/app_base_color">
 
-            <ImageView
-                android:id="@+id/img_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
+            <com.flyco.tablayout.SegmentTabLayout
+                android:id="@+id/tablayout"
+                android:layout_width="180dp"
+                android:layout_height="31dp"
                 android:layout_centerInParent="true"
-                android:layout_marginLeft="10dp"
-                android:background="@mipmap/arrow_left" />
+                tl:tl_indicator_anim_enable="true"
+                tl:tl_indicator_bounce_enable="false"
+                tl:tl_indicator_color="#fff"
+                tl:tl_textSelectColor="@color/app_base_color"
+                tl:tl_textsize="12dp" />
 
-            <TextView
-                android:id="@+id/tv_typename"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/img_search"
+                android:layout_width="18dp"
+                android:layout_height="17dp"
+                android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
-                android:text="所有分类"
-                android:textColor="#fff"
-                android:textSize="16dp" />
+                android:layout_marginRight="11dp"
+                android:background="@mipmap/ic_search" />
         </RelativeLayout>
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <FrameLayout
+        android:id="@+id/fl_change"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

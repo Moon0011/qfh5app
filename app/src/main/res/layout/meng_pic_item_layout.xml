@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="92dp"
+    android:background="#fff">
+
+    <ImageView
+        android:id="@+id/game_logo"
+        android:layout_width="102dp"
+        android:layout_height="72dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="12dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/error_pic" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/game_logo"
+        android:gravity="center|left"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[福利向]小狐狸Sica"
+            android:textColor="#313131"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/tv_sec_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:text="1个月前"
+            android:textColor="#949494"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:background="#e6e6e6" />
+
+</RelativeLayout>

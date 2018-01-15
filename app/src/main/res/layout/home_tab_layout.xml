@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="房间"
-            android:textColor="@color/app_base_color"
+            android:textColor="@drawable/bg_tab_text"
             android:textSize="9dp" />
     </LinearLayout>
 </RelativeLayout>

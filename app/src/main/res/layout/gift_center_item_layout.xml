@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="78dp"
+    android:background="#fff">
+
+    <ImageView
+        android:id="@+id/game_logo"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="12dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/error_pic" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@+id/game_logo"
+        android:gravity="center|left"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/game_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小小军师"
+            android:textColor="#000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/game_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="礼包种类：2"
+            android:textColor="#636363"
+            android:textSize="11dp" />
+
+        <TextView
+            android:id="@+id/game_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="统率名将，征战沙场"
+            android:textColor="#636363"
+            android:textSize="11dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_play"
+        android:layout_width="49dp"
+        android:layout_height="22dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_corner_style2"
+        android:text="查看"
+        android:textColor="#fff" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#e6e6e6"/>
+
+</RelativeLayout>
